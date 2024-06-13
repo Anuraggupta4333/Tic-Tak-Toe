@@ -20,17 +20,22 @@ const resetgame = () => {
     turn =true;
  enableBoxes();
  msgcontainer.classList.add("hide");
+  // Remove "x" and "o" classes from all boxes
+
+  boxes.forEach(box => {
+    box.classList.remove("x", "o");
+});
 }
 
 boxes.forEach((box) => {
     box.addEventListener("click", (e) => {
         if (turn) {
             e.target.innerText = "X";
-            e.target.classList.add("x"); // Add X class
+            e.target.classList.add("o"); // Add X class
             turn = false;
         } else {
             e.target.innerText = "O";
-            e.target.classList.add("o"); // Add X class
+            e.target.classList.add("x"); // Add X class
             turn = true;
         }
         e.target.disabled = true;
